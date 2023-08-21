@@ -82,7 +82,7 @@ module "vmlinux-n01537188" {
   vmlinux-nic = {
     ip-configuration = {
       subnet_id                     = module.network-n01537188.n01537188-subnet.id
-      private_ip_address_allocation = "Static"
+      private_ip_address_allocation = "Dynamic"
     }
   }
 

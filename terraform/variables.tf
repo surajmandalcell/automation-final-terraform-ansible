@@ -30,8 +30,8 @@ variable "loadbalancer-rules" {
   default = {
     name          = "loadbalancer-rules"
     protocol      = "Tcp"
-    frontend_port = "22"
-    backend_port  = "22"
+    frontend_port = "80"
+    backend_port  = "80"
   }
 }
 

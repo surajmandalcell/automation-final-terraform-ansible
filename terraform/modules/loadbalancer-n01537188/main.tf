@@ -48,4 +48,7 @@ resource "azurerm_lb_rule" "n01537188-loadbalancer-rules" {
   frontend_port                  = var.loadbalancer-rules.frontend_port
   backend_port                   = var.loadbalancer-rules.backend_port
   frontend_ip_configuration_name = "${var.loadbalancer-name}-ipconfig"
+  backend_address_pool_ids = [
+    azurerm_lb_backend_address_pool.n01537188-loadbalancer-address_pool.id
+  ]
 }
