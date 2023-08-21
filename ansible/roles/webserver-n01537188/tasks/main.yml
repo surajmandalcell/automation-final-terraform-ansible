@@ -1,0 +1,24 @@
+---
+- name: Install Apache web service
+  yum:
+    name: "{{ package }}"
+    state: present
+  notify: 
+    - restart_httpd
+
+- name: copy hostname to apache
+  shell: | 
+    echo $HOSTNAME > index.html 
+    cp index.html /var/www/html/index.html
+  notify: 
+    - restart_httpd
+
+- name: change file permission
+  file:
+    path: /var/www/html/index.html
+    state: file
+    mode: '0444'
+  notify: 
+    - restart_httpd
+...
+

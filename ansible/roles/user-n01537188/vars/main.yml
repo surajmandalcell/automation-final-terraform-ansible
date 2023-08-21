@@ -1,0 +1,19 @@
+---
+users:
+  - groups: "cloudadmins,wheel"
+    username: user100
+    state: present
+
+  - groups: "cloudadmins,wheel"
+    username: user200
+    state: present
+
+  - groups: "cloudadmins,wheel"
+    username: user300
+    state: present
+
+sudoersUpdate:
+  - path: /etc/sudoers.d/nopasswd
+    validate: /usr/sbin/visudo -cf %s
+    state: present
+...

@@ -1,0 +1,30 @@
+---
+- name: Create a partition
+  parted:
+    device: "{{ item.device }}"
+    number: "{{ item.number }}"
+    state: present
+    part_start: "{{ item.part_start }}"
+    part_end: "{{ item.part_end }}"
+  loop: "{{ diskdetails }}"
+
+- name: Format the disk
+  filesystem:
+    fstype: "{{ item.fstype }}"
+    dev: "{{ item.partition }}"
+  loop: "{{ diskdetails }}"
+
+- name: Create directory
+  file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ diskdetails }}"
+
+- name: Mount the partition
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.partition }}"
+    fstype: "{{ item.fstype }}"
+    state: mounted
+  loop: "{{ diskdetails }}"
