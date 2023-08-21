@@ -4,6 +4,8 @@ resource "azurerm_public_ip" "n01537188-loadbalancer-pip" {
 
   name = "${var.loadbalancer-name}-pip"
 
+  domain_name_label = "n01537188lb"
+
   allocation_method = var.allocation_method
   idle_timeout_in_minutes = "30"
 
@@ -20,6 +22,8 @@ resource "azurerm_lb" "n01537188-loadbalancer" {
     name                 = "${var.loadbalancer-name}-ipconfig"
     public_ip_address_id = azurerm_public_ip.n01537188-loadbalancer-pip.id
   }
+
+  depends_on = [ azurerm_public_ip.n01537188-loadbalancer-pip ]
 
   tags = var.common_tags
 }

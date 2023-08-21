@@ -82,12 +82,12 @@ module "vmlinux-n01537188" {
   vmlinux-nic = {
     ip-configuration = {
       subnet_id                     = module.network-n01537188.n01537188-subnet.id
-      private_ip_address_allocation = "Dynamic"
+      private_ip_address_allocation = "Static"
     }
   }
 
   vmlinux-pip = {
-    allocation_method       = "Dynamic"
+    allocation_method       = "Static"
     idle_timeout_in_minutes = "30"
   }
 
@@ -146,7 +146,7 @@ module "loadbalancer-n01537188" {
   resource_group_name = module.rgroup-n01537188.resource_group_name
 
   loadbalancer-name = "n01537188-loadbalancer"
-  allocation_method = "Dynamic"
+  allocation_method = "Static"
 
   loadbalancer-backend_pool_association = {
     count     = 3
