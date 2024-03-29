@@ -45,7 +45,7 @@ TODO:
 - [x] network-n01537188
 - [x] rgroup-n01537188
 - [x] vmlinux-n01537188
-- [ ] ansible
+- [x] ansible
 
 # Common Commands
 
